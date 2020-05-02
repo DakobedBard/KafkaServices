@@ -1,4 +1,4 @@
-package org.mddarr.orders.controller;
+package org.mddarr.orders.api;
 
 
 import org.mddarr.orders.beans.OrderDTO;

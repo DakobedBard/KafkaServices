@@ -7,6 +7,7 @@ import io.confluent.kafka.schemaregistry.client.MockSchemaRegistryClient;
 import io.confluent.kafka.schemaregistry.client.SchemaRegistryClient;
 import io.confluent.kafka.serializers.KafkaAvroDeserializer;
 import org.apache.avro.Schema;
+import org.mddarr.orders.event.dto.Order;
 
 /**
  * This code is not thread safe and should not be used in production environment
@@ -14,8 +15,8 @@ import org.apache.avro.Schema;
 public class CustomKafkaAvroDeserializer extends KafkaAvroDeserializer {
     @Override
     public Object deserialize(String topic, byte[] bytes) {
-        if (topic.equals(Constants.EVENT_1_TOPIC)) {
-            this.schemaRegistry = getMockClient(Event1.SCHEMA$);
+        if (topic.equals("orders")) {
+            this.schemaRegistry = getMockClient(Order.SCHEMA$);
         }
 
         return super.deserialize(topic, bytes);

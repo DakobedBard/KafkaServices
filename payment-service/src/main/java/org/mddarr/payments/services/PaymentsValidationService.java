@@ -21,7 +21,6 @@ public class PaymentsValidationService {
         public Function<KStream<String, ValidatedOrder>,KStream<String, ValidatedOrder>> process() {
             return (validatedOrderStream)-> {
 
-
                 KStream<String, ValidatedOrder> stocked = validatedOrderStream.filter((key, value) -> value.getState() == OrderState.OUT_OF_STOCK);
                 KStream<String, ValidatedOrder> out_of_stock = validatedOrderStream.filter((key, value) -> value.getState() == OrderState.STOCKED);
 
