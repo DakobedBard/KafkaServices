@@ -21,11 +21,12 @@ public class ProductService {
     AvroProductProducer avroProductProducer;
 
     private static final Logger log = LoggerFactory.getLogger(ProductService.class);
-    public void addProduct(ProductDTO productDTO){
+    public String addProduct(ProductDTO productDTO){
         UUID uuid =  UUID.randomUUID();
         ProductEntity product = new ProductEntity(uuid.toString(),productDTO.getName(),productDTO.getBrand(),productDTO.getPrice(), productDTO.getQuantity());
         postgresRepository.save(product);
         avroProductProducer.sendProduct(product);
+        return uuid.toString();
     }
 
     public Optional<ProductEntity> getProduct(String id){

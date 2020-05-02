@@ -14,14 +14,14 @@ import org.springframework.kafka.test.utils.KafkaTestUtils;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-public class MessageProducerTest extends UatAbstractTest {
+public class OrderProducerTest extends UatAbstractTest {
 
     @Autowired
-    private OrderAvroProducer messageProducer;
+    private OrderAvroProducer orderAvroProducer;
 
     @Test
     public void should_send_order() {
-        messageProducer.sendOrder(new Order("id","cid", OrderState.PENDING,"Jordan X" ,2l,12.7 ));
+        orderAvroProducer.sendOrder(new Order("id","cid", OrderState.PENDING,"Jordan X" ,2l,12.7 ));
         ConsumerRecord<String, Order> singleRecord = KafkaTestUtils.getSingleRecord(orderConsumer, "orders");
         assertThat(singleRecord).isNotNull();
     }

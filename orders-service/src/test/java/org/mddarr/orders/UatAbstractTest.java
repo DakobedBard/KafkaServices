@@ -1,13 +1,9 @@
 package org.mddarr.orders;
 
-import org.mddarr.orders.event.dto.Event1;
-
 import org.mddarr.orders.event.dto.Order;
 import org.mddarr.orders.mock.CustomKafkaAvroDeserializer;
 import org.apache.kafka.clients.consumer.Consumer;
 import org.apache.kafka.clients.consumer.ConsumerConfig;
-import org.apache.kafka.clients.producer.KafkaProducer;
-import org.apache.kafka.clients.producer.Producer;
 import org.assertj.core.util.Lists;
 import org.junit.After;
 import org.junit.Before;
