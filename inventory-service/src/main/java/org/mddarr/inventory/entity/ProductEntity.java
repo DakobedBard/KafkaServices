@@ -14,7 +14,7 @@ public class ProductEntity {
     private String id;
     private String name;
     private String brand;
-    private Long price;
+    private Double price;
     private Long quantity;
     public String getId() {
         return id;
@@ -36,13 +36,9 @@ public class ProductEntity {
         this.quantity = quantity;
     }
 
-    public ProductEntity(String name, String brand, Long price) {
-        this.brand = brand;
-        this.name = name;
-        this.price = price;
-    }
 
-    public ProductEntity(String id, String name, String brand, Long price, Long quantity) {
+
+    public ProductEntity(String id, String name, String brand, Double price, Long quantity) {
         this.id = id;
         this.name = name;
         this.brand = brand;
@@ -50,11 +46,11 @@ public class ProductEntity {
         this.quantity = quantity;
     }
 
-    public Long getPrice() {
+    public Double getPrice() {
         return price;
     }
 
-    public void setPrice(Long price) {
+    public void setPrice(Double price) {
         this.price = price;
     }
 

@@ -1,4 +1,4 @@
-package org.mddarr.inventory.services;
+package org.mddarr.inventory.services.processors;
 
 import org.apache.kafka.common.serialization.Deserializer;
 import org.apache.kafka.common.serialization.Serde;
@@ -10,7 +10,7 @@ import java.io.*;
 import java.util.*;
 
 @Service
-public class InventoryService {
+public class InventoryProcessor {
 
     public static final String PURCHASE_EVENTS = "purchase-events";
     public static final String PRODUCT_FEED = "product-feed";

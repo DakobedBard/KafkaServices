@@ -17,7 +17,7 @@ public class ProductApi implements ProductApiInterface {
     private ProductService productService;
 
     @Override
-    public void addProduct(@RequestParam("name") String name, @RequestParam("brand") String brand, @RequestParam("price") Long price  ) {
+    public void addProduct(@RequestParam("name") String name, @RequestParam("brand") String brand, @RequestParam("price") Double price  ) {
         ProductDTO productDTO = new ProductDTO(name, brand, price,10l);
         productService.addProduct(productDTO);
     }

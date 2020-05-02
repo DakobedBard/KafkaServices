@@ -2,7 +2,7 @@ package org.mddarr.inventory.controllers;
 
 import org.mddarr.inventory.bean.ProductBean;
 import org.mddarr.inventory.bean.ProductPurchaseCountBean;
-import org.mddarr.inventory.services.InventoryService;
+import org.mddarr.inventory.services.processors.InventoryProcessor;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
@@ -34,7 +34,7 @@ public class InventoryController {
     @RequestMapping("/product/idx")
     public ProductBean product(@RequestParam(value="id") String id) {
         final ReadOnlyKeyValueStore<String, Product> productStore =
-                interactiveQueryService.getQueryableStore(InventoryService.ALL_PRODUCTS, QueryableStoreTypes.<String, Product>keyValueStore());
+                interactiveQueryService.getQueryableStore(InventoryProcessor.ALL_PRODUCTS, QueryableStoreTypes.<String, Product>keyValueStore());
 
         final Product product = productStore.get(id);
         if (product == null) {
@@ -47,12 +47,12 @@ public class InventoryController {
     @SuppressWarnings("unchecked")
     public List<ProductPurchaseCountBean> topFive(@RequestParam(value="genre") String genre) {
 
-        HostInfo hostInfo = interactiveQueryService.getHostInfo(InventoryService.TOP_FIVE_PRODUCTS_STORE,
-                InventoryService.TOP_FIVE_KEY, new StringSerializer());
+        HostInfo hostInfo = interactiveQueryService.getHostInfo(InventoryProcessor.TOP_FIVE_PRODUCTS_STORE,
+                InventoryProcessor.TOP_FIVE_KEY, new StringSerializer());
 
         if (interactiveQueryService.getCurrentHostInfo().equals(hostInfo)) {
             logger.info("Top Five products request served from same host: " + hostInfo);
-            return topFiveProducts(InventoryService.TOP_FIVE_KEY, InventoryService.TOP_FIVE_PRODUCTS_STORE);
+            return topFiveProducts(InventoryProcessor.TOP_FIVE_KEY, InventoryProcessor.TOP_FIVE_PRODUCTS_STORE);
         }
         else {
             //find the store from the proper instance.
@@ -65,25 +65,25 @@ public class InventoryController {
     }
 
     private List<ProductPurchaseCountBean> topFiveProducts(final String key, final String storeName) {
-        final ReadOnlyKeyValueStore<String, InventoryService.TopFiveProducts> topFiveStore =
-                interactiveQueryService.getQueryableStore(storeName, QueryableStoreTypes.<String, InventoryService.TopFiveProducts>keyValueStore());
+        final ReadOnlyKeyValueStore<String, InventoryProcessor.TopFiveProducts> topFiveStore =
+                interactiveQueryService.getQueryableStore(storeName, QueryableStoreTypes.<String, InventoryProcessor.TopFiveProducts>keyValueStore());
 
         // Get the value from the store
-        final InventoryService.TopFiveProducts value = topFiveStore.get(key);
+        final InventoryProcessor.TopFiveProducts value = topFiveStore.get(key);
         if (value == null) {
             throw new IllegalArgumentException(String.format("Unable to find value in %s for key %s", storeName, key));
         }
         final List<ProductPurchaseCountBean> results = new ArrayList<>();
         value.forEach(productPurchaseCount -> {
 
-            HostInfo hostInfo = interactiveQueryService.getHostInfo(InventoryService.ALL_PRODUCTS,
+            HostInfo hostInfo = interactiveQueryService.getHostInfo(InventoryProcessor.ALL_PRODUCTS,
                     productPurchaseCount.getProductId(), new StringSerializer());
 
             if (interactiveQueryService.getCurrentHostInfo().equals(hostInfo)) {
                 logger.info("Product info request served from same host: " + hostInfo);
 
                 final ReadOnlyKeyValueStore<String, Product> productStore =
-                        interactiveQueryService.getQueryableStore(InventoryService.ALL_PRODUCTS, QueryableStoreTypes.<String, Product>keyValueStore());
+                        interactiveQueryService.getQueryableStore(InventoryProcessor.ALL_PRODUCTS, QueryableStoreTypes.<String, Product>keyValueStore());
 
                 final Product product = productStore.get(productPurchaseCount.getProductId());
                 results.add(new ProductPurchaseCountBean(product.getBrand(),product.getName(), productPurchaseCount.getCount()));

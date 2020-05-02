@@ -17,8 +17,8 @@ import java.util.Map;
 import java.util.function.BiFunction;
 
 @Service
-public class OrdersProcessingService {
-    public class OrdersProcessor {
+public class OrdersProcessor {
+    public class Processor {
         @Bean
         public BiFunction<KStream<String, Order>, KTable<String, Product>, KStream<String, ValidatedOrder>> ordersprocess() {
 

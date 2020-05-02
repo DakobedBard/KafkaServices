@@ -20,7 +20,7 @@ import io.confluent.kafka.serializers.AbstractKafkaAvroSerDeConfig;
 import io.confluent.kafka.serializers.KafkaAvroSerializer;
 import io.confluent.kafka.streams.serdes.avro.SpecificAvroSerializer;
 //import kafka.streams.interactive.query.avro.PlayEvent;
-import org.mddarr.inventory.services.InventoryService;
+import org.mddarr.inventory.services.processors.InventoryProcessor;
 import org.mddarr.products.Product;
 import org.mddarr.products.PurchaseEvent;
 import org.apache.kafka.clients.producer.ProducerConfig;
@@ -60,7 +60,7 @@ public class PurchaseEventProducer {
 		DefaultKafkaProducerFactory<String, Product> pf1 = new DefaultKafkaProducerFactory<>(props);
 
 		KafkaTemplate<String, Product> template1 = new KafkaTemplate<>(pf1, true);
-		template1.setDefaultTopic(InventoryService.PRODUCT_FEED);
+		template1.setDefaultTopic(InventoryProcessor.PRODUCT_FEED);
 
 		Statement stmt = null;
 		Connection c = null;
@@ -97,7 +97,7 @@ public class PurchaseEventProducer {
 			 PreparedStatement pst = con.prepareStatement("SELECT * FROM product_entity");
 			 ResultSet rs = pst.executeQuery()) {
 			while (rs.next()) {
-				products.add(new Product (rs.getString(1), rs.getString(2), rs.getString(3), rs.getLong(4),rs.getLong(5)));
+				products.add(new Product (rs.getString(1), rs.getString(2), rs.getString(3), rs.getDouble(4),rs.getLong(5)));
 			}
 		} catch (SQLException e) {
 			System.err.println(e.getClass().getName()+": "+e.getMessage());
@@ -131,13 +131,13 @@ public class PurchaseEventProducer {
 
 		DefaultKafkaProducerFactory<String, Product> pf1 = new DefaultKafkaProducerFactory<>(props1);
 		KafkaTemplate<String, Product> template1 = new KafkaTemplate<>(pf1, true);
-		template1.setDefaultTopic(InventoryService.PRODUCT_FEED);
+		template1.setDefaultTopic(InventoryProcessor.PRODUCT_FEED);
 
 		List<Product> products = getProductsFromDB();
 
         products.forEach(product -> {
 			System.out.println("Writing product information for '" + product.getName() + "' to input topic " +
-					InventoryService.PRODUCT_FEED);
+					InventoryProcessor.PRODUCT_FEED);
 			template1.sendDefault(product.getId(), product);
 		});
 

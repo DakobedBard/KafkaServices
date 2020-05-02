@@ -1,4 +1,4 @@
-package org.mddarr.inventory.services;
+package org.mddarr.inventory.services.processors;
 
 import org.apache.kafka.streams.KeyValue;
 import org.apache.kafka.streams.kstream.KStream;
@@ -21,7 +21,7 @@ import java.util.Arrays;
 import java.util.Date;
 
 @Service
-public class BranchingService {
+public class BranchingProcessor {
 
     @EnableBinding({WordBranches.class, ProductBranches.class})
     @EnableAutoConfiguration

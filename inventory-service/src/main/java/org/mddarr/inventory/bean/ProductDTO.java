@@ -3,14 +3,14 @@ package org.mddarr.inventory.bean;
 public class ProductDTO {
     String name;
     String brand;
-    Long price;
+    Double price;
     Long quantity;
 
     public Long getQuantity() {
         return quantity;
     }
 
-    public ProductDTO(String name, String brand, Long price, Long quantity) {
+    public ProductDTO(String name, String brand, Double price, Long quantity) {
         this.name = name;
         this.brand = brand;
         this.price = price;
@@ -33,10 +33,10 @@ public class ProductDTO {
     public void setBrand(String brand) {
         this.brand = brand;
     }
-    public Long getPrice() {
+    public Double getPrice() {
         return price;
     }
-    public void setPrice(Long price) {
+    public void setPrice(Double price) {
         this.price = price;
     }
 }
