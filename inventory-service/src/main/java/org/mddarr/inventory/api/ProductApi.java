@@ -16,11 +16,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.List;
 import java.util.UUID;
 
 @RestController
 @RequestMapping("/products/")
-public class ProductApi implements ProductApiInterface {
+public class ProductApi {
 
     @Autowired
     private ProductService productService;
@@ -28,14 +29,20 @@ public class ProductApi implements ProductApiInterface {
     @Autowired
     private InteractiveQueryService interactiveQueryService;
 
-    @Override
-    public String addProduct(@RequestParam("name") String name, @RequestParam("brand") String brand, @RequestParam("price") Double price, @RequestParam("quantity") Long quantity) {
-        ProductDTO productDTO = new ProductDTO(name, brand, price,quantity);
-        String id = productService.addProduct(productDTO);
-        return id;
+    @RequestMapping("/list")
+    public List<ProductEntity> getProducts() {
+        return productService.findAll();
     }
 
-    @Override
+
+//    @Override
+//    public String addProduct(@RequestParam("name") String name, @RequestParam("brand") String brand, @RequestParam("price") Double price, @RequestParam("quantity") Long quantity) {
+//        ProductDTO productDTO = new ProductDTO(name, brand, price,quantity);
+//        String id = productService.addProduct(productDTO);
+//        return id;
+//    }
+
+
     public void deleteProduct(String id) {productService.deleteProduct(id); }
 
 

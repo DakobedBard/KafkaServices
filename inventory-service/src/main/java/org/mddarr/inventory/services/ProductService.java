@@ -8,6 +8,8 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
 
@@ -15,24 +17,31 @@ import java.util.UUID;
 public class ProductService {
 
     @Autowired
-    InventoryRepository postgresRepository;
+    InventoryRepository productRepository;
 
     @Autowired
     AvroProductProducer avroProductProducer;
 
-    private static final Logger log = LoggerFactory.getLogger(ProductService.class);
-    public String addProduct(ProductDTO productDTO){
-        UUID uuid =  UUID.randomUUID();
-        ProductEntity product = new ProductEntity(uuid.toString(),productDTO.getName(),productDTO.getBrand(),productDTO.getPrice(), productDTO.getQuantity());
-        postgresRepository.save(product);
-        avroProductProducer.sendProduct(product);
-        return uuid.toString();
+    public List<ProductEntity> findAll() {
+        List<ProductEntity> products = new ArrayList<>();
+        productRepository.findAll()
+                .forEach(products::add);
+        return products;
     }
 
+//    private static final Logger log = LoggerFactory.getLogger(ProductService.class);
+//    public String addProduct(ProductDTO productDTO){
+//        UUID uuid =  UUID.randomUUID();
+//        ProductEntity product = new ProductEntity(uuid.toString(),productDTO.getName(),productDTO.getBrand(),productDTO.getPrice(), productDTO.getQuantity());
+//        productRepository.save(product);
+//        avroProductProducer.sendProduct(product);
+//        return uuid.toString();
+//    }
+
     public Optional<ProductEntity> getProduct(String id){
-        return postgresRepository.findById(id);
+        return productRepository.findById(id);
     }
-    public void deleteProduct(String id){postgresRepository.deleteById(id);}
+    public void deleteProduct(String id){productRepository.deleteById(id);}
 
 
 }
