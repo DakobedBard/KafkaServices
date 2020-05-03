@@ -37,7 +37,7 @@ public class PurchaseEventProducer {
 
 	public static void main(String... args) throws Exception {
 		initProductsDB();
-		populateTopics();
+//		populateTopics();
 	}
 
 	private static void initProductsDB() {
@@ -72,13 +72,13 @@ public class PurchaseEventProducer {
 			c = DriverManager
 					.getConnection("jdbc:postgresql://localhost:5433/productdb",
 							"postgres", "postgres");
-			BufferedReader br = new BufferedReader(new FileReader("stack/db/products.csv"));
+			BufferedReader br = new BufferedReader(new FileReader("stack/db/prods.csv"));
 			while((row = br .readLine()) != null) {
 				uuid = UUID.randomUUID();
 				columns = row.split(",");
 				stmt = c.createStatement();
-				String sql = String.format("INSERT INTO product_entity (\"id\",\"brand\",\"name\",\"price\",\"quantity\") "
-						+ "VALUES ('%s', '%s', '%s', '%d','%d' );",uuid.toString(), columns[0], columns[1], Long.parseLong(columns[2]), 10);
+				String sql = String.format("INSERT INTO product_entity (\"id\",\"brand\",\"imageurl\", \"name\",\"price\",\"quantity\") "
+						+ "VALUES ('%s', '%s', '%s','%s', '%d','%d' );",uuid.toString(), columns[0], columns[3], columns[1], Long.parseLong(columns[2]), 10);
 				stmt.executeUpdate(sql);
 //				template1.sendDefault(uuid.toString(),new Product(uuid.toString(),columns[0], columns[1], Long.parseLong(columns[2])));
 				System.out.println(columns[0]);
