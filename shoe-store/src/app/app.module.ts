@@ -16,6 +16,7 @@ import { ProductListComponent } from './product-list/product-list.component';
 import { ProductListItemComponent } from './product-list-item/product-list-item.component';
 import { ProductDetailComponent } from './product-detail/product-detail.component';
 import { ProductComponent } from './product/product.component';
+import { ShoppingCartComponent } from './shopping-cart/shopping-cart.component';
 
 
 
@@ -36,7 +37,8 @@ import { ProductComponent } from './product/product.component';
     ProductListItemComponent,
     ProductDetailComponent,
     DashboardComponent,
-    ProductComponent
+    ProductComponent,
+    ShoppingCartComponent
 
   ],
   providers: [{
