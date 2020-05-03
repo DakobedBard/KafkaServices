@@ -8,16 +8,16 @@ import { ProductService } from '../product.service';
   styleUrls: [ './dashboard.component.css' ]
 })
 export class DashboardComponent implements OnInit {
-  heroes: Product[] = [];
+  products: Product[] = [];
 
-  constructor(private heroService: ProductService) { }
+  constructor(private productService: ProductService) { }
 
   ngOnInit() {
     this.getHeroes();
   }
 
   getHeroes(): void {
-    this.heroService.getProducts()
-      .subscribe(heroes => this.heroes = heroes.slice(1, 5));
+    this.productService.getProducts()
+      .subscribe(products => this.products = products);
   }
 }
