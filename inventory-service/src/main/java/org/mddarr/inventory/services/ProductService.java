@@ -29,6 +29,11 @@ public class ProductService {
         return products;
     }
 
+    public Optional<ProductEntity> getProduct(String id){
+        return productRepository.findById(id);
+    }
+
+
 //    private static final Logger log = LoggerFactory.getLogger(ProductService.class);
 //    public String addProduct(ProductDTO productDTO){
 //        UUID uuid =  UUID.randomUUID();
@@ -38,10 +43,9 @@ public class ProductService {
 //        return uuid.toString();
 //    }
 
-    public Optional<ProductEntity> getProduct(String id){
-        return productRepository.findById(id);
-    }
+
     public void deleteProduct(String id){productRepository.deleteById(id);}
+
 
 
 }

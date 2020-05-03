@@ -12,11 +12,13 @@ import org.mddarr.inventory.services.processors.InventoryProcessor;
 import org.mddarr.products.Product;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cloud.stream.binder.kafka.streams.InteractiveQueryService;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.UUID;
 
 @RestController
@@ -29,9 +31,24 @@ public class ProductApi {
     @Autowired
     private InteractiveQueryService interactiveQueryService;
 
+    @CrossOrigin(origins = "http://localhost:4200")
     @RequestMapping("/list")
     public List<ProductEntity> getProducts() {
         return productService.findAll();
+    }
+
+
+    @RequestMapping("/idx")
+    @CrossOrigin(origins = "http://localhost:4200")
+    public Optional<ProductEntity> getProduct(@RequestParam(value="id") String id) {
+        final ReadOnlyKeyValueStore<String, Product> productStore =
+                interactiveQueryService.getQueryableStore(InventoryProcessor.ALL_PRODUCTS, QueryableStoreTypes.<String, Product>keyValueStore());
+        return productService.getProduct(id);
+//        final Product product = productStore.get(id);
+//        if (product == null) {
+//            throw new IllegalArgumentException("hi");
+//        }
+//        return new ProductBean(product.getBrand(), product.getName()) ;
     }
 
 
@@ -46,16 +63,6 @@ public class ProductApi {
     public void deleteProduct(String id) {productService.deleteProduct(id); }
 
 
-    @RequestMapping("/product/idx")
-    public ProductBean getProduct(@RequestParam(value="id") String id) {
-        final ReadOnlyKeyValueStore<String, Product> productStore =
-                interactiveQueryService.getQueryableStore(InventoryProcessor.ALL_PRODUCTS, QueryableStoreTypes.<String, Product>keyValueStore());
 
-        final Product product = productStore.get(id);
-        if (product == null) {
-            throw new IllegalArgumentException("hi");
-        }
-        return new ProductBean(product.getBrand(), product.getName()) ;
-    }
 
 }
