@@ -18,11 +18,7 @@ const routes: Routes = [{
       loadChildren: () => import('./charts/charts.module')
         .then(m => m.ChartsModule),
     },
-    {
-      path: 'tables',
-      loadChildren: () => import('./tables/tables.module')
-        .then(m => m.TablesModule),
-    },
+
     {
       path: '',
       redirectTo: 'dashboard',

@@ -24,7 +24,6 @@ import { OrdersProfitChartData } from './data/orders-profit-chart';
 import { TrafficBarData } from './data/traffic-bar';
 import { ProfitBarAnimationChartData } from './data/profit-bar-animation-chart';
 
-import { SolarData } from './data/solar';
 import { TrafficChartData } from './data/traffic-chart';
 import { StatsBarData } from './data/stats-bar';
 import { CountryOrderData } from './data/country-order';
