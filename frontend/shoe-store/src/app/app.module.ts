@@ -11,6 +11,8 @@ import { CoreModule } from './@core/core.module';
 import { ThemeModule } from './@theme/theme.module';
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
+import { ProductDetailComponent } from './components/product-detail/product-detail.component'
+import { ProductListComponent } from './components/product-list/product-list.component'
 import {
   NbChatModule,
   NbDatepickerModule,
@@ -22,8 +24,11 @@ import {
 } from '@nebular/theme';
 
 @NgModule({
-  declarations: [AppComponent],
+  declarations: [AppComponent,
+    ProductListComponent,
+    ProductDetailComponent],
   imports: [
+
     BrowserModule,
     BrowserAnimationsModule,
     HttpClientModule,

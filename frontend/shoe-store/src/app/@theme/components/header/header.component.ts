@@ -17,13 +17,14 @@ export class HeaderComponent implements OnInit, OnDestroy {
 
   themes = [
     {
-      value: 'default',
-      name: 'Light',
-    },
-    {
       value: 'dark',
       name: 'Dark',
     },
+    {
+      value: 'default',
+      name: 'Light',
+    },
+
     {
       value: 'cosmic',
       name: 'Cosmic',
@@ -34,7 +35,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
     },
   ];
 
-  currentTheme = 'default';
+  currentTheme = 'dark';
 
   userMenu = [ { title: 'Profile' }, { title: 'Log out' } ];
 
@@ -46,8 +47,8 @@ export class HeaderComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit() {
-    this.currentTheme = this.themeService.currentTheme;
-
+    this.currentTheme = 'dark' //this.themeService.currentTheme;
+    this.changeTheme('dark')
 
     const { xl } = this.breakpointService.getBreakpointsMap();
     this.themeService.onMediaQueryChange()
@@ -76,8 +77,6 @@ export class HeaderComponent implements OnInit, OnDestroy {
 
   toggleSidebar(): boolean {
     this.sidebarService.toggle(true, 'menu-sidebar');
-
-
     return false;
   }
 

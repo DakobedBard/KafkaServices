@@ -2,14 +2,14 @@ import { NbMenuItem } from '@nebular/theme';
 
 export const MENU_ITEMS: NbMenuItem[] = [
   {
-    title: 'E-commerce',
+    title: 'Shoes',
     icon: 'shopping-cart-outline',
     link: '/pages/dashboard',
     home: true,
   },
   {
-    title: 'Charts',
-    icon: 'pie-chart-outline',
+    title: 'Shopping Cart',
+    icon: 'shopping-cart-outline',
     children: [
       {
         title: 'Echarts',
