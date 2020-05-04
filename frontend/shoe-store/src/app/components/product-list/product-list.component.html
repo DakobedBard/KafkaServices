@@ -1,18 +1,12 @@
 
- <div>
-    <label>Product Name name:
-      <input #heroName />
-    </label>
-    <!-- (click) passes input value to add() and then clears the input -->
-=
+  <div class="grid grid-pad">
+    <a *ngFor="let product of products" class="col-1-4"
+        routerLink="detail/{{product.id}}">
+      <div class="module hero">
+        <h4>{{product.name}}</h4>
+      </div>
+      <div>
+        <img [src]=product.imageurl height="250" width="276"/>
+      </div>
+    </a>
   </div>
-  
-  <ul class="heroes">
-    <li *ngFor="let product of products">
-      <a routerLink="/detail/{{product.id}}">
-        <span class="badge">{{product.id}}</span> {{product.name}}
-      </a>
-
-    </li>
-  </ul>
-  

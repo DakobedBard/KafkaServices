@@ -4,26 +4,12 @@ export const MENU_ITEMS: NbMenuItem[] = [
   {
     title: 'Shoes',
     icon: 'shopping-cart-outline',
-    link: '/pages/dashboard',
+    link: '/pages/products',
     home: true,
   },
   {
     title: 'Shopping Cart',
     icon: 'shopping-cart-outline',
-    children: [
-      {
-        title: 'Echarts',
-        link: '/pages/charts/echarts',
-      },
-      {
-        title: 'Charts.js',
-        link: '/pages/charts/chartjs',
-      },
-      {
-        title: 'D3',
-        link: '/pages/charts/d3',
-      },
-    ],
   },
   {
     title: 'Auth',

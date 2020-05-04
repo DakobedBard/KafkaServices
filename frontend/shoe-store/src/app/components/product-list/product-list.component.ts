@@ -17,12 +17,9 @@ export class ProductListComponent implements OnInit {
 
   }
 
-
-
   getProducts():void{
     this.productService.getProducts().subscribe((data => {
       for (const d of (data as any)) {
-        console.log("whhaatt " + d.name);
         this.products.push({
           id: d.id,
           imageurl: d.imageurl,
