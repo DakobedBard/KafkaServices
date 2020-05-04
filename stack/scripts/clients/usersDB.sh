@@ -1,0 +1,1 @@
+docker exec -it usersDB psql -U postgres -d usersdb

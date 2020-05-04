@@ -1,20 +1,15 @@
 package org.mddarr.inventory;
 import org.apache.kafka.clients.consumer.Consumer;
 import org.apache.kafka.clients.consumer.ConsumerConfig;
-import org.apache.kafka.clients.consumer.ConsumerRecord;
 import org.assertj.core.util.Lists;
 import org.junit.After;
-import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.experimental.categories.Category;
 import org.junit.runner.RunWith;
-import org.mddarr.inventory.api.ProductApi;
-import org.mddarr.inventory.bean.ProductBean;
-import org.mddarr.inventory.bean.ProductDTO;
+import org.mddarr.users.api.ProductApi;
 
 import org.mddarr.inventory.mock.CustomProductAvroDeserializer;
-import org.mddarr.orders.event.dto.Order;
 import org.mddarr.products.Product;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.kafka.KafkaProperties;
@@ -27,7 +22,6 @@ import org.springframework.test.context.junit4.SpringRunner;
 
 import java.util.HashMap;
 import java.util.Map;
-import java.util.UUID;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest

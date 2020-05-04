@@ -1,6 +1,20 @@
 version: '2'
 services:
 
+  usersDB:
+    image: debezium/example-postgres:${DEBEZIUM_VERSION}
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_DB=usersdb
+    container_name: usersDB
+    ports:
+      - 5436:5432
+    networks:
+      - mddarr
+
+
+
   productDB:
     image: debezium/example-postgres:${DEBEZIUM_VERSION}
     volumes:
