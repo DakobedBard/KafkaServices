@@ -1,13 +1,6 @@
 
- <div>
-    <label>Product Name name:
-      <input #heroName />
-    </label>
-    <!-- (click) passes input value to add() and then clears the input -->
-=
-  </div>
-  
-  <ul class="heroes">
+
+<ul class="heroes">
     <li *ngFor="let product of products">
       <a routerLink="/detail/{{product.id}}">
         <span class="badge">{{product.id}}</span> {{product.name}}

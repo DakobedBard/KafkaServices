@@ -1,8 +1,20 @@
 
 <nav>
   <a routerLink="/dashboard">Dashboard</a>
-  <a routerLink="/products">Heroes</a>
+  <a routerLink="/products">Shoes</a>
+  <a routerLink="/register">Register</a>
 </nav>
+
+<nb-layout>
+  <nb-layout-column>
+    <nb-card>
+      <nb-card-body>
+        <a nbButton routerLink="auth/login">Login</a>
+      </nb-card-body>
+    </nb-card>
+  </nb-layout-column>
+</nb-layout>
+
 
 <router-outlet></router-outlet>
 

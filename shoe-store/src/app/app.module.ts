@@ -17,7 +17,7 @@ import { ProductListItemComponent } from './product-list-item/product-list-item.
 import { ProductDetailComponent } from './product-detail/product-detail.component';
 import { ProductComponent } from './product/product.component';
 import { ShoppingCartComponent } from './shopping-cart/shopping-cart.component';
-
+import { RegisterComponent } from './components/register/register.component'
 
 
 @NgModule({
@@ -38,7 +38,8 @@ import { ShoppingCartComponent } from './shopping-cart/shopping-cart.component';
     ProductDetailComponent,
     DashboardComponent,
     ProductComponent,
-    ShoppingCartComponent
+    ShoppingCartComponent,
+    RegisterComponent
 
   ],
   providers: [{
