@@ -1,7 +1,7 @@
 export class Attribute {
     AttributeName: string;
     AttributeId: number;
-    AttributeValueId: string;
+    AttributeValueId: number;
     AttributeValue: string;
-    ProductId: number;
+    productID: string;
 }
