@@ -39,18 +39,28 @@ export class AddToCartComponent implements OnInit {
         if(cart == null){
         cart = [];
         cart.push(product);
+        console.log("The cart item looks like " + JSON.stringify(product )) ;
+        console.log("The cart didn't exist and looks like " + JSON.stringify(cart))
+        localStorage.setItem('Cart', JSON.stringify(cart));
       } else{
         console.log("productID " + product.productID)
-        // let currentProduct = cart.filter(a => a.productID == product.productID);
-        // if(currentProduct.length > 0){
-        //   cart.filter(a => {
-        //     a.quantity = a.quantity + this.quantity;
-        //   });
-        // } else{
-        //   cart.push(product);
-        // }
+        console.log("The cart item looks like " + JSON.stringify(product )) ;
+        console.log("The cart exists and looks like " + JSON.stringify(cart))
+
+        let currentProduct = cart.filter(a => a.productID == product.productID);
+        if(currentProduct.length > 0){
+          cart.filter(a => {
+            a.quantity = a.quantity + this.quantity;
+          });
+        } else{
+          cart.push(product);
+        }
+        localStorage.setItem('Cart', JSON.stringify(cart));
       }
-      localStorage.setItem('Cart', JSON.stringify(cart));
+      // var a = cart.pop();
+      // // console.log("The cart item looks like " + a ) ;
+      // // console.log("The cart looks like " + JSON.stringify(cart));
+      // localStorage.setItem('Cart', JSON.stringify(cart));
   }
 }
     // let cart: CartProduct[] = JSON.parse(localStorage.getItem('Cart'));

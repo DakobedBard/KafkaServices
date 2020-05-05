@@ -15,11 +15,13 @@ export class ShoppingCartComponent implements OnInit {
 
   ngOnInit() {
     this.cartService.cart.subscribe(a => this.cart = a);
+    this.getCartProductItems();
     this.getTotal();
   }
 
   getCartProductItems(){
     this.cart = JSON.parse(localStorage.getItem('Cart'));
+    console.log("The cart has " + this.cart.length + " items ")
   }
 
   onRemoveProductsFromCart(productId: string){
@@ -49,7 +51,11 @@ export class ShoppingCartComponent implements OnInit {
 
   getTotal(){
     this.total = 0;
+    console.log("The length is " +  this.cart.length)
+    var b = this.cart.pop();
+    console.log("B " + b) 
     this.cart.forEach((element) => {
+      console.log("The element is " + element)
       // this.total = this.total + (element.price*element.quantity);
     })
   }
