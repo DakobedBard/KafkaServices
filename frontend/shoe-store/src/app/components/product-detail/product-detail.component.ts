@@ -33,10 +33,10 @@ export class ProductDetailComponent implements OnInit {
     colors.push(red);
     colors.push(blue);
     this.product =   {productID: "a", imageurl:"https://dalinar-shoes.s3-us-west-2.amazonaws.com/air-jordan1-low.webp" ,
-     name: "airflow", "brand":'Nike', price:140, Color: colors, Size: colors, description:'dope shoes'}
-    // let id: string= this.route.snapshot.paramMap.get('id');
-    // this.productService.getProduct(id)
-    //   .subscribe(product => this.product = product);
+    name: "airflow", "brand":'Nike', price:140, Color: colors, Size: colors, description:'dope shoes'}
+    let id: string= this.route.snapshot.paramMap.get('id');
+    this.productService.getProduct(id)
+      .subscribe(product => this.product = product);
   }
 
   goBack(): void {
