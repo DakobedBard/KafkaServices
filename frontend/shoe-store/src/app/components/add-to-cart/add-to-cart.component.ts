@@ -1,6 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { ProductService } from '../../services/product.service';
 import { CartProduct } from '../../models/cart-product';
+import { Attribute } from '../../models/attribute';
 
 import { AppHeaderComponent } from '../app-header/app-header.component';
 import { CartService } from '../../services/cart.service';
@@ -26,9 +27,54 @@ export class AddToCartComponent implements OnInit {
   }
 
   onAddProductToCart(){
-    let product: CartProduct;
-  };
+
+    var colors: Attribute[] = [];
+    var red: Attribute = {AttributeName: "Color",AttributeId: 1,AttributeValueId: 2, AttributeValue: "Red", productID: "a"}
+    var blue: Attribute = {AttributeName: "Color",AttributeId: 1,AttributeValueId: 3, AttributeValue: "Blue", productID: "a"}
+    colors.push(red);
+    colors.push(blue);
+    let product: CartProduct =  {productID: "a", imageurl:"https://dalinar-shoes.s3-us-west-2.amazonaws.com/air-jordan1-low.webp",
+    name: "airflow", "brand":'Nike', price:140, Color: colors, Size: colors, description:'dope shoes', quantity:2, SizeId:2,ColorId:4};
+    let cart: CartProduct[] = JSON.parse(localStorage.getItem('Cart')); 
+        if(cart == null){
+        cart = [];
+        cart.push(product);
+      } else{
+        console.log("productID " + product.productID)
+        let currentProduct = cart.filter(a => a.productID == product.productID);
+        // if(currentProduct.length > 0){
+        //   cart.filter(a => {
+        //     a.quantity = a.quantity + this.quantity;
+        //   });
+        // } else{
+        //   cart.push(product);
+        // }
+      }
+      localStorage.setItem('Cart', JSON.stringify(cart));
+  }
 }
+    // let cart: CartProduct[] = JSON.parse(localStorage.getItem('Cart'));
+    //   if(cart == null){
+    //     cart = [];
+    //     cart.push(product);
+    //   } else{
+    //     console.log("productID " + product.productID)
+    //     // let currentProduct = cart.filter(a => a.productID == product.productID);
+    //     // if(currentProduct.length > 0){
+    //     //   cart.filter(a => {
+    //     //     a.quantity = a.quantity + this.quantity;
+    //     //   });
+    //     // } else{
+    //     //   cart.push(product);
+    //     // }
+    //   }
+
+    //   localStorage.setItem('Cart', JSON.stringify(cart));
+
+    //   console.log("The shopping cart product " + cart.length )
+
+//   };
+// }
     // this.productService.getProductDetailsById(this.productId)
     // .subscribe(p => {
     //   product = p as CartProduct;

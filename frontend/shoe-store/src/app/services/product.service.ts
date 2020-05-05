@@ -19,6 +19,10 @@ export class ProductService {
     return this.http.get<Product[]>(this.productsURL+'/list/')
   }
   
+  getProductID(){
+    
+  }
+
   getProductDetailsById(id: string): Observable<Product> {
     console.log("The id of the route is " + id)
     var route = `${this.productsURL}/idx?id=${id}`
