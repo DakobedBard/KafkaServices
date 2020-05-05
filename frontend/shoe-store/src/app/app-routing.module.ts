@@ -10,7 +10,7 @@ import {
   NbRequestPasswordComponent,
   NbResetPasswordComponent,
 } from '@nebular/auth';
-import { NbAuthModule, NbPasswordAuthStrategy } from '@nebular/auth';
+import { NbAuthModule, NbAuthJWTToken,NbPasswordAuthStrategy } from '@nebular/auth';
 export const routes: Routes = [
   {
     path: 'pages',
@@ -62,6 +62,11 @@ const config: ExtraOptions = {
         NbPasswordAuthStrategy.setup({
           name: 'email',
           baseEndpoint: 'http://localhost:8080',
+          token: {
+            class: NbAuthJWTToken,
+
+            key: 'token', // this parameter tells where to look for the token
+          },
            login: {
              // ...
              endpoint: '/auth/login',

@@ -3,7 +3,7 @@ import { NbMediaBreakpointsService, NbMenuService, NbSidebarService, NbThemeServ
 
 import { map, takeUntil } from 'rxjs/operators';
 import { Subject } from 'rxjs';
-
+import { NbAuthJWTToken, NbAuthService } from '@nebular/auth';
 @Component({
   selector: 'ngx-header',
   styleUrls: ['./header.component.scss'],
@@ -13,7 +13,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
 
   private destroy$: Subject<void> = new Subject<void>();
   userPictureOnly: boolean = false;
-  user: any;
+  user: {};
 
   themes = [
     {
@@ -39,11 +39,28 @@ export class HeaderComponent implements OnInit, OnDestroy {
 
   userMenu = [ { title: 'Profile' }, { title: 'Log out' } ];
 
-  constructor(private sidebarService: NbSidebarService,
+  constructor(private authService: NbAuthService,
+              private sidebarService: NbSidebarService,
               private menuService: NbMenuService,
               private themeService: NbThemeService,
 
               private breakpointService: NbMediaBreakpointsService) {
+
+
+
+                this.authService.onTokenChange()
+                .subscribe((access_token: NbAuthJWTToken) => {
+          
+                  if (access_token.isValid()) {
+                    this.user = access_token.getPayload(); // here we receive a payload from the token and assigns it to our `user` variable 
+                    console.log("j succk"); 
+                    console.log(access_token)                   
+                  }else{
+                    console.log("You succk");
+                  }
+          
+                });
+                
   }
 
   ngOnInit() {
