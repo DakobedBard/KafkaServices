@@ -16,6 +16,8 @@ import { ProductListComponent } from './components/product-list/product-list.com
 import { NbAuthService } from '@nebular/auth';
 import { NbAuthModule} from './auth/auth.module'
 import { CoreModule } from './@core/core.module';
+import { ShoppingCartComponent } from './components/shopping-cart/shopping-cart.component'
+
 import {
   NbChatModule,
   NbDatepickerModule,
@@ -29,7 +31,9 @@ import {
 @NgModule({
   declarations: [AppComponent,
     ProductListComponent,
-    ProductDetailComponent],
+    ProductDetailComponent,
+    ShoppingCartComponent
+  ],
   imports: [
     
     NbSecurityModule.forRoot(),

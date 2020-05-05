@@ -1,5 +1,5 @@
 <!--Main layout-->
-<!-- <main class="mt-5 pt-4">
+<main class="mt-5 pt-4">
 
     <div class="container dark-grey-text mt-5">
       <div class="row">
@@ -7,8 +7,7 @@
           <div class="product-image">
             <div class="view hm-zoom z-depth-2" style="cursor: pointer">
               <div class="d-flex product-image pt-2">
-                <img [src]="product.imageurl *ngIf="product.imageurl
-                  class="img-fluid " [alt]="product.Name">
+                <img [src]=product.imageurl height="250" width="276" class="img-fluid " [alt]="product.name">
               </div>
 
             </div>
@@ -18,7 +17,7 @@
                   <div>
                     <h6 class="my-0">Product Price</h6>
                   </div>
-                  <span class="text-muted" style="color:crimson !important">${{product.Price}}</span>
+                  <span class="text-muted" style="color:crimson !important">${{product.price}}</span>
                 </li>
               </ul>
             </div>
@@ -27,15 +26,16 @@
         <div class="col-sm-8">
           <div class="product-detail">
             <h5 class="product-head">Product Details</h5>
+
             <table class="table" cellspacing="0" style="max-height: 28px">
               <tbody>
                 <tr>
                   <th scope="row">Product Name</th>
-                  <td>{{product.Name}}</td>
+                  <td>{{product.name}}</td>
                 </tr>
                 <tr>
                   <th scope="row">Product Description</th>
-                  <td>{{product.Description}}</td>
+                  <td>{{product.description}}</td>
                 </tr>
 
                 <tr>
@@ -49,7 +49,7 @@
                       </option>
                     </select>
                   </td>
-                  <td>
+                  <!-- <td>
                     <strong class="d-flex">
                       Size
                     </strong>
@@ -58,13 +58,13 @@
                       <option [value]="item.AttributeValueId" *ngFor="let item of product.Size">{{item.AttributeValue}}
                       </option>
                     </select>
-                  </td>
+                  </td> -->
                 </tr>
                 <tr>
-                  <td colspan="2">
+                  <!-- <td colspan="2">
                     <app-add-to-cart class="d-flex" [productId]="product.ProductId" [colorId]="colorId" [sizeId]="sizeId"
                       [isHomePage]="false"></app-add-to-cart>
-                  </td>
+                  </td> -->
                 </tr>
               </tbody>
             </table>
@@ -73,7 +73,7 @@
         </div>
       </div>
     </div>
-  </main> -->
+  </main>
 
 
 <!-- <p>product-detail works!</p>

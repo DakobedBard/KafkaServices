@@ -2,6 +2,8 @@ import { ExtraOptions, RouterModule, Routes } from '@angular/router';
 import { NgModule } from '@angular/core';
 import { LoginComponent } from './components/authentication/login/login.component'
 import { RegisterComponent }  from './components/authentication/register/register.component'
+import { ShoppingCartComponent } from './components/shopping-cart/shopping-cart.component'
+
 import {
   NbAuthComponent,
   NbLoginComponent,
@@ -17,6 +19,7 @@ export const routes: Routes = [
     loadChildren: () => import('./pages/pages.module')
       .then(m => m.PagesModule),
   },
+  { path: 'cart/shopping-cart', component: ShoppingCartComponent},
   {
     path: 'auth',
     component: NbAuthComponent,
