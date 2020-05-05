@@ -19,21 +19,19 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.stream.binder.kafka.streams.InteractiveQueryService;
+import org.springframework.context.annotation.Bean;
+import org.springframework.web.servlet.config.annotation.CorsRegistry;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 
 @SpringBootApplication
-public class UsersApplication {
 
-	@Autowired
-	private InteractiveQueryService interactiveQueryService;
+public class UsersApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(UsersApplication.class, args);
 	}
 
-	public static class KStreamMusicSampleApplication {
-
-	}
 }
 
 

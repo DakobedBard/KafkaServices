@@ -6,7 +6,6 @@ import org.mddarr.users.dao.UserEntityRepository;
 import org.mddarr.users.entity.UserEntity;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 import java.util.UUID;
 
 @Service
@@ -21,7 +20,4 @@ public class UserService {
         userRepository.save(user);
         return uuid.toString();
     }
-
-
-
 }

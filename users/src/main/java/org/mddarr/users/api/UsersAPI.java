@@ -12,6 +12,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/users/")
+
 public class UsersAPI {
 
     @Autowired
@@ -19,6 +20,13 @@ public class UsersAPI {
 
     @Autowired
     private InteractiveQueryService interactiveQueryService;
+
+    @RequestMapping("/login/")
+    @PostMapping("/post/")
+    public String login(@RequestParam(value="email") String email, @RequestParam(value="password") String password)
+    {
+        return "order";
+    }
 
     @RequestMapping("/register/")
     @PostMapping("/post/")
@@ -30,5 +38,15 @@ public class UsersAPI {
         return "order";
     }
 
+
+    @RequestMapping("/register2/")
+    @PostMapping("/post/")
+    public String postOrdera(@RequestParam(value="name") String name, @RequestParam(value="email") String email,
+                            @RequestParam(value="password")  String password)
+    {
+        UserDTO user = new UserDTO(name,email, password);
+        this.userService.registerUser(user);
+        return "order";
+    }
 
 }
