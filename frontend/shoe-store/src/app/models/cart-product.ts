@@ -1,5 +1,6 @@
 import { Attribute } from './attribute';
-export class Product {
+
+export class CartProduct {
     productID: string;
     name: string;
     brand: string;
@@ -8,5 +9,7 @@ export class Product {
     Color: Attribute[];
     Size: Attribute[];
     description: string;
-  }
-  
+    quantity: number;
+    SizeId: number;
+    ColorId: number;
+}

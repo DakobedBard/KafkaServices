@@ -9,7 +9,13 @@ import { Product } from '../../models/product'
 })
 export class ProductListComponent implements OnInit {
 
-  products = [];
+  products = [
+    {id: 1, imageurl:"https://dalinar-shoes.s3-us-west-2.amazonaws.com/air-jordan1-low.webp" , name: "airflow", "brand":'Nike', price:140},
+    {id: 2, imageurl: "https://dalinar-shoes.s3-us-west-2.amazonaws.com/air-jordan1-low.webp" , name: "airflow", "brand":'Nike', price:140},
+    {id: 3, imageurl: "https://dalinar-shoes.s3-us-west-2.amazonaws.com/air-jordan1-low.webp", name: "airflow", "brand":'Nike', price:140},
+    {id: 4, imageurl: "https://dalinar-shoes.s3-us-west-2.amazonaws.com/air-jordan1-low.webp", name: "airflow", "brand":'Nike', price:140},
+    {id: 5, imageurl: "https://dalinar-shoes.s3-us-west-2.amazonaws.com/air-jordan1-low.webp", name: "airflow", "brand":'Nike', price:140},
+  ];
   constructor(private productService :ProductService) { }
 
   ngOnInit() {
