@@ -2,6 +2,7 @@ package org.mddarr.users.services;
 
 import org.mddarr.users.bean.UserDTO;
 import org.mddarr.users.dao.UserEntityRepository;
+import org.mddarr.users.dao.UserRepository;
 
 import org.mddarr.users.entity.UserEntity;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,7 +10,7 @@ import org.springframework.stereotype.Service;
 import java.util.UUID;
 
 @Service
-public class UserService {
+public class UserServiceMine {
 
     @Autowired
     UserEntityRepository userRepository;

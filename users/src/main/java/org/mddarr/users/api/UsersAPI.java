@@ -2,7 +2,7 @@ package org.mddarr.users.api;
 
 
 import org.mddarr.users.bean.UserDTO;
-import org.mddarr.users.services.UserService;
+import org.mddarr.users.services.UserServiceMine;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cloud.stream.binder.kafka.streams.InteractiveQueryService;
@@ -16,7 +16,7 @@ import java.util.List;
 public class UsersAPI {
 
     @Autowired
-    private UserService userService;
+    private UserServiceMine userService;
 
     @Autowired
     private InteractiveQueryService interactiveQueryService;
