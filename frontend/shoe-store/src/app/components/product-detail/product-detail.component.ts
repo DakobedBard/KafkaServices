@@ -13,7 +13,8 @@ import { Attribute } from '../../models/attribute';
 export class ProductDetailComponent implements OnInit {
 
   @Input() product: Product;
-  
+  sizeId: number = 2;
+  colorId: number = 4;
   constructor(
     private route: ActivatedRoute,
     private productService: ProductService,
