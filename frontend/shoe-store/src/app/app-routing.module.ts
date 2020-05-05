@@ -61,10 +61,10 @@ const config: ExtraOptions = {
       strategies: [
         NbPasswordAuthStrategy.setup({
           name: 'email',
-          baseEndpoint: '',
+          baseEndpoint: 'http://localhost:8080',
            login: {
              // ...
-             endpoint: '/api/auth/login',
+             endpoint: '/auth/login',
            },
            register: {
              // ...

@@ -47,10 +47,10 @@ export const NB_CORE_PROVIDERS = [
     strategies: [
       NbPasswordAuthStrategy.setup({
         name: 'email',
-        baseEndpoint: 'http://localhost:8030/users/',
+        baseEndpoint: 'http://localhost:8080/',
          login: {
            // ...
-           endpoint: 'login/',
+           endpoint: 'auth/login/',
          },
          register: {
            // ...
