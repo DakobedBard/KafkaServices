@@ -1,9 +1,12 @@
-
+import { Attribute } from './attribute';
 export class Product {
-    id: string;
+    productID: string;
     name: string;
     brand: string;
     price: number;
     imageurl: string;
+    Color: Attribute[];
+    Size: Attribute[];
+    description: string;
   }
   

@@ -12,11 +12,25 @@ import { catchError, map, tap } from 'rxjs/operators';
 export class ProductService {
 
 
-  private productsURL = 'http://localhost:8035/products';
+  private productsURL = 'http://localhost:8040/products';
   constructor(private http: HttpClient){}
   
   getProducts(): Observable<Product[]>{
-    return this.http.get<Product[]>(this.productsURL+'/list/')
+    return this.http.get<Product[]>(this.productsURL)
+  }
+  
+  getProductID(){
+    
+  }
+
+  getProductDetailsById(id: string): Observable<Product> {
+    console.log("The id of the route is " + id)
+    var route = `${this.productsURL}/idx?id=${id}`
+    console.log("The route is " + route)
+    const url = `${this.productsURL}/idx?id=${id}`;
+    return this.http.get<Product>(url).pipe(
+      catchError(this.handleError<Product>(`getProduct id=${id}`))
+    );
   }
   
     /** GET hero by id. Will 404 if id not found */

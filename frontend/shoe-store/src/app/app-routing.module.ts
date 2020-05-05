@@ -2,6 +2,8 @@ import { ExtraOptions, RouterModule, Routes } from '@angular/router';
 import { NgModule } from '@angular/core';
 import { LoginComponent } from './components/authentication/login/login.component'
 import { RegisterComponent }  from './components/authentication/register/register.component'
+import { ShoppingCartComponent } from './components/shopping-cart/shopping-cart.component'
+
 import {
   NbAuthComponent,
   NbLoginComponent,
@@ -10,13 +12,14 @@ import {
   NbRequestPasswordComponent,
   NbResetPasswordComponent,
 } from '@nebular/auth';
-import { NbAuthModule, NbPasswordAuthStrategy } from '@nebular/auth';
+import { NbAuthModule, NbAuthJWTToken,NbPasswordAuthStrategy } from '@nebular/auth';
 export const routes: Routes = [
   {
     path: 'pages',
     loadChildren: () => import('./pages/pages.module')
       .then(m => m.PagesModule),
   },
+  { path: 'pages/shopping-cart', component: ShoppingCartComponent},
   {
     path: 'auth',
     component: NbAuthComponent,
@@ -62,6 +65,11 @@ const config: ExtraOptions = {
         NbPasswordAuthStrategy.setup({
           name: 'email',
           baseEndpoint: 'http://localhost:8080',
+          token: {
+            class: NbAuthJWTToken,
+
+            key: 'token', // this parameter tells where to look for the token
+          },
            login: {
              // ...
              endpoint: '/auth/login',
