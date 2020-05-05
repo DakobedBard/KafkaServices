@@ -12,11 +12,11 @@ import { catchError, map, tap } from 'rxjs/operators';
 export class ProductService {
 
 
-  private productsURL = 'http://localhost:8035/products';
+  private productsURL = 'http://localhost:8040/products';
   constructor(private http: HttpClient){}
   
   getProducts(): Observable<Product[]>{
-    return this.http.get<Product[]>(this.productsURL+'/list/')
+    return this.http.get<Product[]>(this.productsURL)
   }
   
   getProductID(){
