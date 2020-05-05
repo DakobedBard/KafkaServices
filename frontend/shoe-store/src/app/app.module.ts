@@ -35,7 +35,7 @@ import {
     ProductListComponent,
     ProductDetailComponent,
     ShoppingCartComponent,
-    AddToCartComponent
+    AddToCartComponent,
   ],
   imports: [
     FormsModule,

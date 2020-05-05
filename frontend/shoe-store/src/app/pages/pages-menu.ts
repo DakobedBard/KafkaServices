@@ -10,7 +10,7 @@ export const MENU_ITEMS: NbMenuItem[] = [
   {
     title: 'Shopping Cart',
     icon: 'shopping-cart-outline',
-    link: '/cart/shopping-cart',
+    link: '/pages/cart',
   },
   {
     title: 'Auth',

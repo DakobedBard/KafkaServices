@@ -19,7 +19,7 @@ export const routes: Routes = [
     loadChildren: () => import('./pages/pages.module')
       .then(m => m.PagesModule),
   },
-  { path: 'cart/shopping-cart', component: ShoppingCartComponent},
+  { path: 'pages/shopping-cart', component: ShoppingCartComponent},
   {
     path: 'auth',
     component: NbAuthComponent,

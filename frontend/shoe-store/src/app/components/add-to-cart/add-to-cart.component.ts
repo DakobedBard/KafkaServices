@@ -41,7 +41,7 @@ export class AddToCartComponent implements OnInit {
         cart.push(product);
       } else{
         console.log("productID " + product.productID)
-        let currentProduct = cart.filter(a => a.productID == product.productID);
+        // let currentProduct = cart.filter(a => a.productID == product.productID);
         // if(currentProduct.length > 0){
         //   cart.filter(a => {
         //     a.quantity = a.quantity + this.quantity;

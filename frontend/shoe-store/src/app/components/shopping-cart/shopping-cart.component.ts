@@ -50,7 +50,7 @@ export class ShoppingCartComponent implements OnInit {
   getTotal(){
     this.total = 0;
     this.cart.forEach((element) => {
-      this.total = this.total + (element.price*element.quantity);
+      // this.total = this.total + (element.price*element.quantity);
     })
   }
 
