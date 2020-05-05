@@ -18,7 +18,9 @@
 
     <modules>
         <module>avro-schema</module>
-        <module>inventory-service</module>
+        <module>authentication</module>
+<!--        <module>inventory-service</module>-->
+<!--        <module> users</module>-->
 <!--        <module>customer-service</module>-->
 <!--        <module>orders-service</module>-->
 <!--        <module>payment-service</module>-->
