@@ -4,12 +4,8 @@ import com.mongodb.MongoClient;
 import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoDatabase;
 import org.bson.Document;
-
 import java.io.BufferedReader;
 import java.io.FileReader;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -23,7 +19,7 @@ public class ProductMongoProducer {
         MongoClient mongoClient = new MongoClient();
         MongoDatabase db = mongoClient.getDatabase("test");
 
-        db.createCollection("products");
+//        db.createCollection("products");
         MongoCollection<Document> dbCollection = db.getCollection("products");
         List<String> sizes = new ArrayList<>(Arrays.asList("6","6.5","7","7.5","8","8.5","9","9.5","10"));
         List<String> colors = new ArrayList<>(Arrays.asList("Red","Blue","Orange"));
@@ -39,9 +35,10 @@ public class ProductMongoProducer {
                         .append("brand", columns[1])
                         .append("imageurl",columns[3])
                         .append("sizes",sizes)
-                        .append("colors",colors);
+                        .append("colors",colors)
+                        .append("price", columns[4])
+                        .append("description", columns[5]);
                 dbCollection.insertOne (document);
-
             }
         } catch (Exception e) {
             e.printStackTrace();
