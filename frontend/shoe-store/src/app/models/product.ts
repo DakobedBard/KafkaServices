@@ -5,8 +5,8 @@ export class Product {
     brand: string;
     price: number;
     imageurl: string;
-    Color: Attribute[];
-    Size: Attribute[];
+    sizes: string[];
+    colors: string[];
     description: string;
   }
   

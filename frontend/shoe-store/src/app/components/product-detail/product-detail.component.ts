@@ -13,8 +13,9 @@ import { Attribute } from '../../models/attribute';
 export class ProductDetailComponent implements OnInit {
 
   @Input() product: Product;
-  sizeId: number = 2;
-  colorId: number = 4;
+  id: string;
+  sizeId: number = 1;
+  colorId: number = 1;
   constructor(
     private route: ActivatedRoute,
     private productService: ProductService,
@@ -33,10 +34,22 @@ export class ProductDetailComponent implements OnInit {
     colors.push(red);
     colors.push(blue);
     this.product =   {productID: "a", imageurl:"https://dalinar-shoes.s3-us-west-2.amazonaws.com/air-jordan1-low.webp" ,
-    name: "airflow", "brand":'Nike', price:140, Color: colors, Size: colors, description:'dope shoes'}
+    name: "airflow", "brand":'Nike', price:140,  colors:["Red", "Blue"], sizes: ["6.5","7"], description:'dope shoes'}
     let id: string= this.route.snapshot.paramMap.get('id');
+    this.id = id;
     this.productService.getProduct(id)
-      .subscribe(product => this.product = product);
+      .subscribe(product => {
+        // console.log("product " + JSON.stringify(product.sizes))
+        // var colors: Attribute[] = [];
+        // var sizes: Attribute[] = [];
+        // var red: Attribute = {AttributeName: "Color",AttributeId: 1,AttributeValueId: 2, AttributeValue: "Red", productID: "a"}
+        // var blue: Attribute = {AttributeName: "Color",AttributeId: 1,AttributeValueId: 3, AttributeValue: "Blue", productID: "a"}
+        // colors.push(red);
+        // colors.push(blue);
+        // product.Color = colors
+        // product.Size = colors
+        this.product = product;
+      });
   }
 
   goBack(): void {

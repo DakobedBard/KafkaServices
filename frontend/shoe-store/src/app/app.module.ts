@@ -19,7 +19,7 @@ import { NbAuthModule} from './auth/auth.module'
 import { CoreModule } from './@core/core.module';
 import { ShoppingCartComponent } from './components/shopping-cart/shopping-cart.component'
 import { AddToCartComponent } from './components/add-to-cart/add-to-cart.component'
-
+import { OrderReviewComponent } from './components/order-review/order-review.component'
 import {
   NbChatModule,
   NbDatepickerModule,
@@ -36,6 +36,7 @@ import {
     ProductDetailComponent,
     ShoppingCartComponent,
     AddToCartComponent,
+    OrderReviewComponent
   ],
   imports: [
     FormsModule,

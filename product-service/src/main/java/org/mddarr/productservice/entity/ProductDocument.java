@@ -16,9 +16,21 @@ public class ProductDocument {
     private String imageurl;
     private List<String> colors;
     private List<String> sizes;
-
+    private String description;
+    private Integer price;
     public String getId() {
         return id;
+    }
+
+    public ProductDocument(String id, String name, String brand, String imageurl, List<String> colors, List<String> sizes, String description, Integer price) {
+        this.id = id;
+        this.name = name;
+        this.brand = brand;
+        this.imageurl = imageurl;
+        this.colors = colors;
+        this.sizes = sizes;
+        this.description = description;
+        this.price = price;
     }
 
     public void setId(String id) {
@@ -65,13 +77,20 @@ public class ProductDocument {
         this.sizes = sizes;
     }
 
-    public ProductDocument(String id, String name, String brand, String imageurl, List<String> colors, List<String> sizes) {
-        this.id = id;
-        this.name = name;
-        this.brand = brand;
-        this.imageurl = imageurl;
-        this.colors = colors;
-        this.sizes = sizes;
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public Integer getPrice() {
+        return price;
+    }
+
+    public void setPrice(Integer price) {
+        this.price = price;
     }
 
     public ProductDocument(){

@@ -5,7 +5,7 @@ import { PagesComponent } from './pages.component';
 import { ProductListComponent } from '../components/product-list/product-list.component'
 import { ProductDetailComponent } from '../components/product-detail/product-detail.component'
 import { ShoppingCartComponent } from '../components/shopping-cart/shopping-cart.component';
-
+import { OrderReviewComponent } from '../components/order-review/order-review.component'
 const routes: Routes = [{
   path: '',
   component: PagesComponent,
@@ -18,6 +18,10 @@ const routes: Routes = [{
     {
       path: 'products',
       component: ProductListComponent,
+    },
+    {
+      path: 'checkout',
+      component: OrderReviewComponent
     },
     {
       path: 'cart',

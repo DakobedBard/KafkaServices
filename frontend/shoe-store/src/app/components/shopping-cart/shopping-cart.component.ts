@@ -52,11 +52,11 @@ export class ShoppingCartComponent implements OnInit {
   getTotal(){
     this.total = 0;
     console.log("The length is " +  this.cart.length)
-    var b = this.cart.pop();
-    console.log("B " + b) 
+    // var b = this.cart.pop();
+    // console.log("B " + JSON.stringify(b)) 
     this.cart.forEach((element) => {
       console.log("The element is " + element)
-      // this.total = this.total + (element.price*element.quantity);
+      this.total = this.total + (element.price*element.quantity);
     })
   }
 

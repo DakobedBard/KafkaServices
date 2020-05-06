@@ -6,10 +6,10 @@ export class CartProduct {
     brand: string;
     price: number;
     imageurl: string;
-    Color: Attribute[];
-    Size: Attribute[];
+    colors: string[];
+    sizes: string[];
     description: string;
     quantity: number;
-    SizeId: number;
-    ColorId: number;
+    sizeID: number;
+    colorID: number;
 }
