@@ -23,8 +23,8 @@ public class ProductMongoProducer {
         MongoClient mongoClient = new MongoClient();
         MongoDatabase db = mongoClient.getDatabase("test");
 
-        db.createCollection("productdocument");
-        MongoCollection<Document> dbCollection = db.getCollection("productdocument");
+        db.createCollection("products");
+        MongoCollection<Document> dbCollection = db.getCollection("products");
         List<String> sizes = new ArrayList<>(Arrays.asList("6","6.5","7","7.5","8","8.5","9","9.5","10"));
         List<String> colors = new ArrayList<>(Arrays.asList("Red","Blue","Orange"));
         try {
@@ -34,7 +34,7 @@ public class ProductMongoProducer {
                 columns = row.split(",");
                 System.out.println(columns[1]);
                 document = new Document()
-                        .append("_id", UUID.randomUUID())
+                        .append("id", UUID.randomUUID())
                         .append("name", columns[0])
                         .append("brand", columns[1])
                         .append("imageurl",columns[3])

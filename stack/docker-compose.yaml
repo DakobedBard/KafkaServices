@@ -13,8 +13,6 @@ services:
     networks:
       - mddarr
 
-
-
   productDB:
     image: debezium/example-postgres:${DEBEZIUM_VERSION}
     volumes:
