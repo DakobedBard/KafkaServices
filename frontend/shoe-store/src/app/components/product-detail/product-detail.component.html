@@ -45,7 +45,8 @@
                     </strong>
                     <select class="browser-default custom-select" *ngIf="product" style="width: 100px"
                       [(ngModel)]="colorId">
-                      <option [value]="item.AttributeValueId" *ngFor="let item of product.Color"> {{item.AttributeValue}}
+                      <option [value]="color" *ngFor="let color of product.colors"> 
+                        {{color}}
                       </option>
                     </select>
                   </td>
@@ -55,14 +56,15 @@
                     </strong>
                     <select class="browser-default custom-select" *ngIf="product" style="width: 100px"
                       [(ngModel)]="sizeId">
-                      <option [value]="item.AttributeValueId" *ngFor="let item of product.Size">{{item.AttributeValue}}
+                      <option [value]="size" *ngFor="let size of product.sizes">
+                        {{size}}
                       </option>
                     </select>
                   </td>
                 </tr>
                 <tr>
                   <td colspan="2">
-                    <app-add-to-cart class="d-flex" [productId]="product.productID"
+                    <app-add-to-cart class="d-flex" [productId]="id"
                      [colorId]="colorId" [sizeId]="sizeId" ></app-add-to-cart>
                   </td>
                 </tr>
