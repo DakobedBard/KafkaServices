@@ -1,7 +1,6 @@
 package org.mddarr.productservice.controller;
 
-import org.mddarr.products.Product;
-import org.mddarr.productservice.entity.ProductEntity;
+import org.mddarr.productservice.entity.ProductDocument;
 import org.mddarr.productservice.services.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -20,13 +19,13 @@ public class ProductController {
 
     @RequestMapping
     @CrossOrigin
-    public List<ProductEntity> getProducts() {
+    public List<ProductDocument> getProducts() {
         return productService.findAll();
     }
 
     @RequestMapping("/idx")
     @CrossOrigin
-    public Optional<ProductEntity> getProduct(@RequestParam(value="id") String id) {
+    public Optional<ProductDocument> getProduct(@RequestParam(value="id") String id) {
         return productService.getProduct(id);
     }
 }

@@ -1,8 +1,8 @@
 package org.mddarr.productservice.services;
 
 
-import org.mddarr.productservice.dao.InventoryRepository;
-import org.mddarr.productservice.entity.ProductEntity;
+import org.mddarr.productservice.dao.ProductRepository;
+import org.mddarr.productservice.entity.ProductDocument;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -14,16 +14,16 @@ import java.util.Optional;
 public class ProductService {
 
     @Autowired
-    InventoryRepository productRepository;
+    ProductRepository productRepository;
 
-    public List<ProductEntity> findAll() {
-        List<ProductEntity> products = new ArrayList<>();
+    public List<ProductDocument> findAll() {
+        List<ProductDocument> products = new ArrayList<>();
         productRepository.findAll()
                 .forEach(products::add);
         return products;
     }
 
-    public Optional<ProductEntity> getProduct(String id){
+    public Optional<ProductDocument> getProduct(String id){
         return productRepository.findById(id);
     }
 
