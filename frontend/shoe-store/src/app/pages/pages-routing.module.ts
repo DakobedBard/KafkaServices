@@ -7,6 +7,7 @@ import { ProductDetailComponent } from '../components/product-detail/product-det
 import { ShoppingCartComponent } from '../components/shopping-cart/shopping-cart.component';
 import { OrderReviewComponent } from '../components/order-review/order-review.component'
 import { CustomerInfoComponent }  from '../components/customer-information/customer-info.component'
+import { PaymentInfoComponent }  from '../components/payment-info/payment-info.component';
 const routes: Routes = [{
   path: '',
   component: PagesComponent,
@@ -16,6 +17,11 @@ const routes: Routes = [{
       redirectTo: 'products',
       pathMatch: 'full',
     },
+    {
+      path: 'payments',
+      component: PaymentInfoComponent
+    },
+
     {
       path: 'products',
       component: ProductListComponent,

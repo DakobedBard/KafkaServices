@@ -21,6 +21,7 @@ import { ShoppingCartComponent } from './components/shopping-cart/shopping-cart.
 import { AddToCartComponent } from './components/add-to-cart/add-to-cart.component'
 import { OrderReviewComponent } from './components/order-review/order-review.component'
 import { CustomerInfoComponent } from './components/customer-information/customer-info.component'
+import { PaymentInfoComponent } from './components/payment-info/payment-info.component'
 import {
   NbChatModule,
   NbDatepickerModule,
@@ -38,7 +39,8 @@ import {
     ShoppingCartComponent,
     AddToCartComponent,
     OrderReviewComponent,
-    CustomerInfoComponent
+    CustomerInfoComponent,
+    PaymentInfoComponent
   ],
   imports: [
     FormsModule,
