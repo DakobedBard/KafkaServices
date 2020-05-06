@@ -42,32 +42,45 @@ export class AddToCartComponent implements OnInit {
       product = p as CartProduct;
       product.quantity = this.quantity;
       product.sizeID = 1//this.sizeId;
-      product.colorID = 1 // this.colorId;      
-    });
-
+      product.colorID = 1 // this.colorId;   
       let cart: CartProduct[] = JSON.parse(localStorage.getItem('Cart'));
       if(cart == null){
         cart = [];
         cart.push(product);
         console.log("The cart item looks like " + JSON.stringify(product )) ;
         console.log("The cart didn't exist and looks like " + JSON.stringify(cart))
+        localStorage.setItem('Cart', JSON.stringify(cart));
       } else{
-        console.log("productID " + product.productID)
-        console.log("The cart item looks like " + JSON.stringify(product )) ;
-        console.log("The cart exists and looks like " + JSON.stringify(cart))
-        let currentProduct = cart.filter(a => a.productID == product.productID);
-        if(currentProduct.length > 0){
-          cart.filter(a => {
-            a.quantity = a.quantity + this.quantity;
-          });
-        } else{
-          cart.push(product);
-         
-
-        }
+        cart.push(product);
+        localStorage.setItem('Cart', JSON.stringify(cart));
       }
-    }
+    });
   }
+}
+  //     let cart: CartProduct[] = JSON.parse(localStorage.getItem('Cart'));
+  //     if(cart == null){
+  //       cart = [];
+  //       cart.push(product);
+  //       console.log("The cart item looks like " + JSON.stringify(product )) ;
+  //       console.log("The cart didn't exist and looks like " + JSON.stringify(cart))
+  //     } else{
+  //       console.log("productID " + product.productID)
+  //       console.log("The cart item looks like " + JSON.stringify(product )) ;
+  //       console.log("The cart exists and looks like " + JSON.stringify(cart))
+  //       let currentProduct = cart.filter(a => a.productID == product.productID);
+  //       if(currentProduct.length > 0){
+  //         cart.filter(a => {
+  //           a.quantity = a.quantity + this.quantity;
+  //         });
+  //       } else{
+  //         cart.push(product);
+         
+  //       }
+
+  //     }
+  //     localStorage.setItem('Cart', JSON.stringify(cart));
+  //   }
+  // }
 
     // let cart: CartProduct[] = JSON.parse(localStorage.getItem('Cart')); 
     //     if(cart == null){
