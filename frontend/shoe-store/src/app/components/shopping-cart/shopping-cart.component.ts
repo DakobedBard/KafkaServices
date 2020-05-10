@@ -35,16 +35,20 @@ export class ShoppingCartComponent implements OnInit {
   onUpdateQuantity(type, productId){
     if(type == 1){
       this.cart.forEach((element, index) => {
-        if(element.productID == productId){
-          this.cart[index].quantity = element.quantity + 1;
-        }
-      });
-    } else {
-      this.cart.forEach((element, index) => {
-        if(element.productID == productId){
-          this.cart[index].quantity = element.quantity - 1;
-        }
-      });
+        console.log("ELement and index " + JSON.stringify(element.productID) + " " + index )
+      })
+
+    //   this.cart.forEach((element, index) => {
+    //     if(element.productID == productId){
+    //       this.cart[index].quantity = element.quantity + 1;
+    //     }
+    //   });
+    // } else {
+    //   this.cart.forEach((element, index) => {
+    //     if(element.productID == productId){
+    //       this.cart[index].quantity = element.quantity - 1;
+    //     }
+    //   });
     }
     this.getTotal();
   }
@@ -55,7 +59,6 @@ export class ShoppingCartComponent implements OnInit {
     // var b = this.cart.pop();
     // console.log("B " + JSON.stringify(b)) 
     this.cart.forEach((element) => {
-      console.log("The element is " + element)
       this.total = this.total + (element.price*element.quantity);
     })
   }

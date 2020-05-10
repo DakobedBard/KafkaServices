@@ -1,6 +1,5 @@
 app:
   name: springboot-jwt-demo
-
 jwt:
   header: Authorization
   expires_in: 300 # 5 minutes

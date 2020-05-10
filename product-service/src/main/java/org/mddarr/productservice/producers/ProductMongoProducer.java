@@ -12,7 +12,7 @@ import java.util.List;
 import java.util.UUID;
 
 public class ProductMongoProducer {
-    public static void main(String... args) throws Exception {
+    public static void productProductMongoDocuments() throws Exception {
         Document document;
         Document inner;
         String row;
@@ -27,7 +27,7 @@ public class ProductMongoProducer {
 
         UUID uuid;
         try {
-            BufferedReader br = new BufferedReader(new FileReader("stack/db/prods.csv"));
+            BufferedReader br = new BufferedReader(new FileReader("product-service/src/main/resources/static/prods.csv"));
             while((row = br .readLine()) != null) {
                 uuid = UUID.randomUUID();
                 columns = row.split(",");
