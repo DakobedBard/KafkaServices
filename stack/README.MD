@@ -1,4 +1,4 @@
-# 
+ 
 curl -i -X POST -H  http://localhost:8083/connectors/ -d @connectors/inventory.json
 
 Delete a connector

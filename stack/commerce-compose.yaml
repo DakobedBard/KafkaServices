@@ -15,7 +15,6 @@ services:
     image: mongo:3.4.22-xenial
     ports:
       - 27017:27017
-
     container_name: mongosdb
 
 

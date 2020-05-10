@@ -20,6 +20,8 @@ import { CoreModule } from './@core/core.module';
 import { ShoppingCartComponent } from './components/shopping-cart/shopping-cart.component'
 import { AddToCartComponent } from './components/add-to-cart/add-to-cart.component'
 import { OrderReviewComponent } from './components/order-review/order-review.component'
+import { CustomerInfoComponent } from './components/customer-information/customer-info.component'
+import { PaymentInfoComponent } from './components/payment-info/payment-info.component'
 import {
   NbChatModule,
   NbDatepickerModule,
@@ -36,7 +38,9 @@ import {
     ProductDetailComponent,
     ShoppingCartComponent,
     AddToCartComponent,
-    OrderReviewComponent
+    OrderReviewComponent,
+    CustomerInfoComponent,
+    PaymentInfoComponent
   ],
   imports: [
     FormsModule,
